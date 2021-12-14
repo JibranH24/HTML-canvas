@@ -43,10 +43,10 @@ class Ball{                        //create class to represent all the balls. us
             this.dx = -this.dx;
         }
      }
-     gravity(){
+     gravity(){        //makes the balls curve
          this.dy+=.1
      }
-     drag(){
+     drag(){           //slows the balls down eventually
          this.dx*=.995
          this.dy*=.995
      }
