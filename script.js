@@ -1,60 +1,46 @@
 "use strict";
 let c = document.getElementById("myCanvas");
 let ctx = c.getContext("2d");
-requestAnimationFrame(bounceAnimation);
-const numBalls = 10;
-class Ball {
-    constructor(dx, dy) {
-        this.x = Math.floor(Math.random() * c.width); //these are properties of the ball, they dont need let
-        this.y = Math.floor(Math.random() * c.height);
-        this.dx = 10;
-        this.dy = 10;
-        this.ballRadius = 40;
-        this.dx = dx;
-        this.dy = dy;
-    }
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.ballRadius, 0, 2 * Math.PI); //"this" makes the code work on this instance of the class
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.stroke();
-    }
-    move() {
-        this.x += this.dx;
-        this.y += this.dy;
-        if (this.y + this.dy > c.height - this.ballRadius || this.y + this.dy < this.ballRadius) {
-            this.dy = -this.dy;
-        }
-        if (this.x + this.dx > c.width - this.ballRadius || this.x + this.dx < this.ballRadius) {
-            this.dx = -this.dx;
-        }
-    }
-    gravity() {
-        this.dy += .1;
-    }
-    drag() {
-        this.dx *= .995;
-        this.dy *= .995;
-    }
+
+
+
+requestAnimationFrame(cycle);
+
+
+
+let x = 180;
+let y = 250;
+let dx = 10;
+let dy = 10;
+let ballRadius = 40;
+
+
+function redBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.stroke();
 }
-let balls = []; //empty array that the created balls get added into.balls is the array of Ball objects thats what the :Ball[] is.
-for (let i = 0; i < numBalls; i++) {
-    balls.push(new Ball(3, 2)); //new creats a new instance of a class so a new Ball is created then pushed into array
-}
-function bounceAnimation() {
-    ctx.fillStyle = "rgba(225,0,0,0.1)";
+
+
+function cycle() {
     ctx.clearRect(0, 0, c.width, c.height); //Clears the canvas
-    for (let i = 0; i < numBalls; i++) {
-        balls[i].draw(); //gives reference to the ball on the "i"th position in the array and then is iterating throigh so all balls are getting the method
-        balls[i].move();
-        balls[i].gravity();
-        //   if (i<numBalls-1){
-        //       ctx.moveTo(balls[i].x,balls[i].y)
-        //       ctx.lineTo(balls[i+1].x,balls[i+1].y)  //this code adds a line between each ball
-        //       ctx.stroke()
-        //   }
+    redBall();
+    //draw the ball
+    //move the ball
+    //check against walls
+    x += dx;
+    y += dy;
+    // if(y + dy < 500) {
+    // dy = -dy;
+    // }
+    if (y + dy > c.height - ballRadius || y + dy < ballRadius) {
+        dy = -dy;
     }
-    requestAnimationFrame(bounceAnimation); // calls the next frame (1/60th of a second later)
+    if (x + dx > c.width - ballRadius || x + dx < ballRadius) {
+        dx = -dx;
+    }
+    requestAnimationFrame(cycle); // calls the next frame (1/60th of a second later)
 }
 //# sourceMappingURL=script.js.map
