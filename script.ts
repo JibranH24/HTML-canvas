@@ -9,7 +9,7 @@ requestAnimationFrame(bounceAnimation)
 
 
 
-const numBalls=6
+const numBalls=7
 
 class Ball{                        //create class to represent all the balls. uses curly brackets
     

@@ -2,7 +2,7 @@
 let c = document.getElementById("myCanvas");
 let ctx = c.getContext("2d");
 requestAnimationFrame(bounceAnimation);
-const numBalls = 6;
+const numBalls = 7;
 class Ball {
     constructor(dx, dy) {
         this.x = Math.floor(Math.random() * c.width); //these are properties of the ball, they dont need let
