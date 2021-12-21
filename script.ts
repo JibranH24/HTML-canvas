@@ -9,7 +9,7 @@ requestAnimationFrame(bounceAnimation)
 
 
 
-const numBalls=10
+const numBalls=5
 
 class Ball{                        //create class to represent all the balls. uses curly brackets
     
@@ -57,7 +57,7 @@ class Ball{                        //create class to represent all the balls. us
 let balls:Ball[]=[]    //empty array that the created balls get added into.balls is the array of Ball objects thats what the :Ball[] is.
 
 for (let i=0;i<numBalls;i++){
-   balls.push( new Ball(3,2))   //new creats a new instance of a class so a new Ball is created then pushed into array
+   balls.push( new Ball(6,5))   //new creats a new instance of a class so a new Ball is created then pushed into array
 
 }
 
@@ -72,6 +72,7 @@ function bounceAnimation(){
      balls[i].draw()   //gives reference to the ball on the "i"th position in the array and then is iterating throigh so all balls are getting the method
      balls[i].move()
      balls[i].gravity()
+     //balls[i].drag()
     //   if (i<numBalls-1){
     //       ctx.moveTo(balls[i].x,balls[i].y)
     //       ctx.lineTo(balls[i+1].x,balls[i+1].y)  //this code adds a line between each ball
